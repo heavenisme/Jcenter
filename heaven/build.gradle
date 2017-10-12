@@ -1,0 +1,25 @@
+apply plugin: 'groovy'
+//apply plugin: 'maven'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+//        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.0.0" // Remove it if you won't to publish SNAPSHOT version.
+    }
+}
+
+dependencies {
+    //gradle sdk
+    compile gradleApi()
+    //groovy sdk
+    compile localGroovy()
+
+    compile 'org.aspectj:aspectjtools:1.8.9'
+}
+
+
+apply from: 'bintray.gradle'
