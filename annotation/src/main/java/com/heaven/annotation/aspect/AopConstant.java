@@ -6,7 +6,7 @@ package com.heaven.annotation.aspect;
  * email: heavenisme@aliyun.com
  * date: 2017-09-05 19:48
  *
- * @version V1.0 TODO <描述当前版本功能>
+ * @version V1.0 常量
  */
 public class AopConstant {
     public static final int WEIXIN = 1;
