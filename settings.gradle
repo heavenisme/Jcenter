@@ -1,1 +1,1 @@
-include ':app','heaven'
+include ':app', ':annotation', 'heaven'
