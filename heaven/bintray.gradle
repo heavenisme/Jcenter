@@ -5,6 +5,24 @@ project.archivesBaseName = PROJ_ARTIFACTID
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
+ext {
+    PROJ_GROUP = 'com.heaven.plugin'
+    PROJ_VERSION = '1.0.0'
+    PROJ_NAME = 'heaven'
+    PROJ_WEBSITEURL = 'https://heavenisme.github.io'
+    PROJ_ISSUETRACKERURL = ''
+    PROJ_VCSURL = 'https://github.com/heavenisme/Jcenter.git'
+    PROJ_DESCRIPTION = 'annotation'
+    PROJ_ARTIFACTID = 'heaven'
+
+    DEVELOPER_ID = 'heaven'
+    DEVELOPER_NAME = 'heaven'
+    DEVELOPER_EMAIL = 'heavenisme@aliyun.com'
+    BINTRAY_USER = 'heavenisme'
+    BINTRAY_KEY = '7cc9544665f4481cd5dc9290148f12f638f2963a'
+}
+
+
 task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
     classifier = 'sources'
@@ -22,7 +40,7 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 javadoc {
-    options{
+    options {
         encoding "UTF-8"
         charSet 'UTF-8'
         author true
