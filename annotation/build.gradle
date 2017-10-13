@@ -1,15 +1,5 @@
 apply plugin: 'java'
 apply plugin: 'com.novoda.bintray-release'//添加
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
-    }
-}
-
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
