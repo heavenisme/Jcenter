@@ -1,4 +1,5 @@
 apply plugin: 'groovy'
+apply plugin: 'com.novoda.bintray-release'//添加
 //apply plugin: 'maven'
 
 
@@ -11,5 +12,13 @@ dependencies {
     compile 'org.aspectj:aspectjtools:1.8.9'
 }
 
-
-apply from: 'bintray.gradle'
+//添加
+publish {
+    userOrg = 'heavenisme'//bintray.com用户名
+    groupId = 'com.heaven.plugin'//jcenter上的路径
+    artifactId = 'heaven'//项目名称
+    publishVersion = '1.0.0'//版本号
+    desc = 'Oh hi, this is a nice description for a project, right?'//描述，不重要
+    website = 'https://github.com/heavenisme/Jcenter.git'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+}
+//apply from: 'bintray.gradle'
