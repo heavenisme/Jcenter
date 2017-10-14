@@ -28,7 +28,7 @@ ext {
 
 
     /*********************uiversion*******************/
-    viewExtraVersion = "26.0.0"
+    viewExtraVersion = "26.+"
     constraintVersion = "1.0.2"
     glideVersion = "3.7.0"
     styleableToastVersion = "1.0.6"

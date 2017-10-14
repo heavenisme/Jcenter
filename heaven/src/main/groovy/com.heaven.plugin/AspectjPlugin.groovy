@@ -19,11 +19,19 @@ public class AspectjPlugin implements Plugin<Project> {
             compile 'org.aspectj:aspectjrt:1.8.9'
             compile 'com.heaven.annotation:annotation:1.0.0'
         }
+
+        project.extensions.create('heaven', HeavenSwitch)
+
         final def log = project.logger
         log.error "========================";
-        log.error "Aspectj切片开始编织Class!";
+        log.error "heaven切片开始编织Class!";
         log.error "========================";
         project.android.applicationVariants.all { variant ->
+            if (!project.heaven.enabled) {
+                log.debug("HeavenSwitch is not disabled.")
+                return;
+            }
+
             def javaCompile = variant.javaCompile
             javaCompile.doLast {
                 String[] args = ["-showWeaveInfo",
