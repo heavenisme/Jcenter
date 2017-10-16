@@ -4,7 +4,6 @@ package com.heaven.model.ifilm;
 import android.view.View;
 import android.widget.Toast;
 
-import com.orhanobut.logger.Logger;
 
 /**
  * Created by LeoLu on 2016/12/9.

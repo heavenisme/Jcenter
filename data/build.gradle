@@ -56,7 +56,13 @@ dependencies {
     compile netDependencies.retrofit
     compile netDependencies.logger
     compile netDependencies.loggingInterceptor
-    compile project(':model')
+    compile(netDependencies.converterxml)
+            {
+                exclude module: 'stax'
+                exclude module: 'stax-api'
+                exclude module: 'xpp3'
+            }
+    compile netDependencies.convertergson
 }
 
 //添加
@@ -64,7 +70,7 @@ publish {
     userOrg = 'heavenisme'//bintray.com用户名
     groupId = 'com.heaven.data'//jcenter上的路径
     artifactId = 'datasource'//项目名称
-    publishVersion = '1.0.0'//版本号
+    publishVersion = '1.0.1'//版本号
     desc = 'android data source aar'//描述，不重要
     website = 'https://github.com/heavenisme/Jcenter.git'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
 }

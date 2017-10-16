@@ -3,7 +3,6 @@ package com.heaven.data.net;
 import android.net.ParseException;
 
 import com.google.gson.JsonParseException;
-import com.heaven.model.entity.DataResponse;
 
 import org.json.JSONException;
 import org.xmlpull.v1.XmlPullParserException;

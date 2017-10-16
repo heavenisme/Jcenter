@@ -1,11 +1,8 @@
 package com.heaven.data.net;
 
 
-import android.util.Base64;
 
 import com.heaven.data.BuildConfig;
-import com.heaven.model.soap.szair.encrypt.CryptUtility;
-import com.heaven.model.soap.szair.encrypt.MD5Util;
 import com.orhanobut.logger.Logger;
 
 import org.json.JSONArray;
@@ -13,7 +10,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.util.Locale;
 
@@ -51,38 +47,6 @@ public class NetInterceptor implements Interceptor {
         return response;
     }
 
-    private byte[] encodeXmlToBytes(String xml) throws IOException{
-        String time = String.valueOf(System.currentTimeMillis());
-        String md5Enc = MD5Util.MD5Encode(MD5_KEY + time);
-
-        // 使用上面生成的串进行AES加密
-        //String aesXml = AESUtil.Encrypt(xml, md5Enc.substring(8, 24));
-
-        // 创建发送的XML存储空间
-        //byte[] timeBytes = time.getBytes();
-        byte[] aesXmlBytes;
-        byte[] key;
-        try {
-            key = md5Enc.substring(8, 24).getBytes("UTF-8");
-            aesXmlBytes = CryptUtility.encrypt(xml.getBytes("UTF-8"), key);
-        } catch (UnsupportedEncodingException e) {
-            throw new IOException();
-        }
-
-        int transDataLength = key.length + aesXmlBytes.length;
-        byte[] transDataBytes = new byte[transDataLength];
-
-        for (int i = 0; i < transDataLength; i++) {
-            if (i < key.length) {
-                transDataBytes[i] = key[i];
-            }else {
-                transDataBytes[i] = aesXmlBytes[i-key.length];
-            }
-        }
-
-        transDataBytes = Base64.encode(transDataBytes, Base64.DEFAULT);
-        return transDataBytes;
-    }
 
     private void printLog(Request request, Response response, long startReqTime, long endReqTime) throws IOException {
         StringBuilder requestLog = new StringBuilder();

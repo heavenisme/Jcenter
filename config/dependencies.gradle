@@ -28,7 +28,7 @@ ext {
 
 
     /*********************uiversion*******************/
-    viewExtraVersion = "26.+"
+    viewExtraVersion = "26.0.0"
     constraintVersion = "1.0.2"
     glideVersion = "3.7.0"
     styleableToastVersion = "1.0.6"
@@ -39,13 +39,9 @@ ext {
     /*********************otherversion*******************/
     rxJavaVersion = '2.0.1'
     rxAndroidVersion = '2.0.1'
-    rxJavaAdapterVersion = '2.3.0'//''2.1.0'
     rxpermissions2Version = '0.8.2'
     retrofitVersion = '2.3.0'
     okHttpVersion = '3.4.1'
-    convertergsonVersion = '2.1.0'
-    converterprotobufVersion = '2.0.2'
-    converterxmlVersion = '2.0.2'
     protostuffcoreVersion = '1.5.2'
     protostuffruntimeVersion = '1.5.2'
 
@@ -113,15 +109,15 @@ ext {
             dagger             : "com.google.dagger:dagger:${daggerVersion}",
             okHttp             : "com.squareup.okhttp3:okhttp:${okHttpVersion}",
             gson               : "com.google.code.gson:gson:${gsonVersion}",
-            rxJavaAdapter      : "com.squareup.retrofit2:adapter-rxjava2:${rxJavaAdapterVersion}",
+            rxJavaAdapter      : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
             rxAndroid          : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
             rxpermissions2  :  "com.tbruyelle.rxpermissions2:rxpermissions:${rxpermissions2Version}@aar",
             javaxInject        : "javax.inject:javax.inject:${javaxInjectVersion}",
             androidAnnotations: "com.android.support:support-annotations:${viewExtraVersion}",
             retrofit           : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-            convertergson      : "com.squareup.retrofit2:converter-gson:${convertergsonVersion}",
-            converterprotobuf : "com.squareup.retrofit2:converter-protobuf:${converterprotobufVersion}",
-            converterxml       : "com.squareup.retrofit2:converter-simplexml:${converterxmlVersion}",
+            convertergson      : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            converterprotobuf : "com.squareup.retrofit2:converter-protobuf:${retrofitVersion}",
+            converterxml       : "com.squareup.retrofit2:converter-simplexml:${retrofitVersion}",
             protostuffcore     : "io.protostuff:protostuff-core:${protostuffcoreVersion}",
             protostuffruntime     : "io.protostuff:protostuff-core:${protostuffruntimeVersion}",
             logger              : "com.orhanobut:logger:${loggerVersion}",

@@ -45,14 +45,13 @@ android {
                     exclude module: 'stax-api'
                     exclude module: 'xpp3'
                 }
-        compile netDependencies.convertergson
 //
 ////        compile netDependencies.rxJavaAdapterTemp
 //        compile netDependencies.rxJavaAdapter
 //        compile netDependencies.rxAndroid
 //        compile netDependencies.retrofit
 
-        compile netDependencies.logger
+//        compile netDependencies.logger
 //        compile netDependencies.loggingInterceptor
         //    compile('com.tencent.tinker:tinker-android-lib:1.7.7')
 //    // 添加依赖。注意，版本号必须一致。
@@ -75,7 +74,7 @@ publish {
     userOrg = 'heavenisme'//bintray.com用户名
     groupId = 'com.heaven.mode'//jcenter上的路径
     artifactId = 'datamode'//项目名称
-    publishVersion = '1.0.0'//版本号
+    publishVersion = '1.0.1'//版本号
     desc = 'android data mode aar'//描述，不重要
     website = 'https://github.com/heavenisme/Jcenter.git'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
 }
