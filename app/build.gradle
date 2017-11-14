@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.heaven.plugin'
+apply plugin: 'heaven'
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
 

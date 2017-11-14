@@ -26,6 +26,29 @@ public class AspectjPlugin implements Plugin<Project> {
         log.error "========================";
         log.error "heaven切片开始编织Class!";
         log.error "========================";
+
+
+        log.error "                    .::::.                    "
+        log.error "                  .::::::::.                  "
+        log.error "                :::::::::::                   "
+        log.error "            ..:::::::::::'                    "
+        log.error "           '::::::::::::'                     "
+        log.error "             .::::::::::                                  "
+        log.error "        '::::::::::::::..                                 "
+        log.error "             ..::::::::::::.                              "
+        log.error "           ``::::::::::::::::                             "
+        log.error "            ::::``:::::::::'        .:::.                 "
+        log.error "          ::::'   ':::::'       .::::::::.                "
+        log.error "        .::::'      ::::     .:::::::'::::.               "
+        log.error "       .:::'       :::::  .:::::::::' ':::::.             "
+        log.error "      .::'        :::::.:::::::::'      ':::::.           "
+        log.error "    .::'         ::::::::::::::'         ``::::.          "
+        log.error "...:::           ::::::::::::'              ``::.         "
+        log.error "```` ':.          ':::::::::'                  ::::..     "
+        log.error "                   '.:::::'                    ':'````..  "
+
+
+
         project.android.applicationVariants.all { variant ->
             if (!project.heaven.enabled) {
                 log.debug("HeavenSwitch is not disabled.")
