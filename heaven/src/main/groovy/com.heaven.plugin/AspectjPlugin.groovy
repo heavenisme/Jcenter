@@ -16,7 +16,7 @@ public class AspectjPlugin implements Plugin<Project> {
 
     void apply(Project project) {
         project.dependencies {
-            compile 'org.aspectj:aspectjrt:1.8.9'
+            compile 'org.aspectj:aspectjrt:1.8.10'
             compile 'com.heaven.annotation:annotation:1.0.0'
         }
 
