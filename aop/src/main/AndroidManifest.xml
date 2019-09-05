@@ -1,0 +1,17 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.heaven.aop" >
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <application>
+        <provider
+            android:name=".InitAopProvider"
+            android:multiprocess="true"
+            android:authorities="${applicationId}.permission.provider"
+            android:exported="false"
+            android:permission="com.heaven.news.engine.manager.READ_WRITE" />
+        <activity android:name=".common.permission.AopPermissionActivity"   android:theme="@style/permissionstheme"/>
+        <activity android:name=".common.pay.AopPayActivity"   android:theme="@style/permissionstheme"/>
+    </application>
+
+</manifest>

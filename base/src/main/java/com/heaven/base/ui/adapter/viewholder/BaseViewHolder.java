@@ -5,16 +5,23 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Build;
-import android.support.v7.widget.RecyclerView;
 import android.text.util.Linkify;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.widget.CheckBox;
 import android.widget.Checkable;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import com.heaven.base.ui.adapter.BaseAdapter;
+import com.heaven.base.ui.adapter.BaseMultAdapter;
+
+import androidx.databinding.ViewDataBinding;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * 作者:Heaven
@@ -22,19 +29,26 @@ import android.widget.TextView;
  * 邮箱:heavenisme@aliyun.com
  */
 
-public class BaseViewHolder extends RecyclerView.ViewHolder {
-    public ViewHolderManager viewHolderManager;
-    public Object itemData;
+public class BaseViewHolder<E> extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+    public int groupPosition = 0;
+    public BaseMultAdapter multAdapter;
+    public BaseAdapter baseAdapter;
+    public BaseMultItem multItem;
+    public BaseAdapter.OnItemClickListener<E> onItemClickListener;
+    public BaseAdapter.OnGroupItemClickListener<E> onGroupItemClickListener;
+    public E itemData;
     private final SparseArray<View> views;
     private View viewItem;
-    private Context context;
+    public ViewDataBinding bindView;
+    public Context context;
     public BaseViewHolder(View itemView) {
         super(itemView);
+        context = itemView.getContext();
         this.viewItem = itemView;
         views = new SparseArray<>();
     }
 
-    public Object getItemData() {
+    public E getItemData() {
         return itemData;
     }
 
@@ -46,12 +60,8 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return getAdapterPosition();
     }
 
-    public ViewHolderManager getViewHolderManager() {
-        return viewHolderManager;
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
+    public BaseMultItem getMultItem() {
+        return multItem;
     }
 
     public void startActivity(Intent intent) {
@@ -78,10 +88,18 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    public BaseViewHolder setText(int viewId, int resId) {
+        TextView view = getView(viewId);
+        if (view != null) {
+            view.setText(resId);
+        }
+        return this;
+    }
+
     public BaseViewHolder setTextColor(int viewId, int textColor) {
         TextView view = getView(viewId);
         if (view != null) {
-            view.setTextColor(textColor);
+            view.setTextColor(context.getResources().getColor(textColor));
         }
         return this;
     }
@@ -110,10 +128,18 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public BaseViewHolder setVisible(int viewId, boolean visible) {
+    public BaseViewHolder setVisibleGone(int viewId, boolean visible) {
         View view = getView(viewId);
         if (view != null) {
             view.setVisibility(visible ? View.VISIBLE : View.GONE);
+        }
+        return this;
+    }
+
+    public BaseViewHolder setVisible(int viewId, boolean visible) {
+        View view = getView(viewId);
+        if (view != null) {
+            view.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
         }
         return this;
     }
@@ -235,6 +261,11 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    public BaseViewHolder setOnWholeItemClickListener() {
+        viewItem.setOnClickListener(this);
+        return this;
+    }
+
     public BaseViewHolder setOnWholeItemTouchListener(View.OnTouchListener listener) {
         viewItem.setOnTouchListener(listener);
         return this;
@@ -245,14 +276,35 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    public BaseViewHolder setOnWholeItemLongClickListener() {
+        viewItem.setOnLongClickListener(this);
+        return this;
+    }
+
     public View getViewItem() {
         return viewItem;
+    }
+
+    public BaseViewHolder setOnClickListener(int viewId) {
+        View view = getView(viewId);
+        if (view != null) {
+            view.setOnClickListener(this);
+        }
+        return this;
     }
 
     public BaseViewHolder setOnClickListener(int viewId, View.OnClickListener listener) {
         View view = getView(viewId);
         if (view != null) {
             view.setOnClickListener(listener);
+        }
+        return this;
+    }
+
+    public BaseViewHolder setOnCheckListener(int viewId, CompoundButton.OnCheckedChangeListener listener) {
+        View view = getView(viewId);
+        if (view instanceof CheckBox) {
+            ((CheckBox)view).setOnCheckedChangeListener(listener);
         }
         return this;
     }
@@ -268,7 +320,7 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
     public BaseViewHolder setOnLongClickListener(int viewId, View.OnLongClickListener listener) {
         View view = getView(viewId);
         if (view != null) {
-            view.setOnLongClickListener(listener);
+            view.setOnLongClickListener(this);
         }
         return this;
     }
@@ -318,5 +370,24 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
             isChecked = view.isChecked();
         }
         return isChecked;
+    }
+
+    public String getString(int strId) {
+        return viewItem.getContext().getResources().getString(strId);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(onItemClickListener != null) {
+            onItemClickListener.onItemClick(v,this,itemData);
+        }
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        if(onItemClickListener != null) {
+            onItemClickListener.onItemLongClick(v,this,itemData);
+        }
+        return false;
     }
 }

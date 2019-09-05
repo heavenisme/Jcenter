@@ -14,9 +14,6 @@ import android.os.Debug;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.SystemClock;
-import android.support.annotation.ColorInt;
-import android.support.annotation.Dimension;
-import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
@@ -26,12 +23,16 @@ import android.view.accessibility.AccessibilityManager;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 
+import com.heaven.base.R;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.heaven.base.R;
+import androidx.annotation.ColorInt;
+import androidx.annotation.Dimension;
+import androidx.annotation.IntDef;
 
 import static com.heaven.base.ui.view.widget.lockview.PatternLockView.AspectRatio.ASPECT_RATIO_HEIGHT_BIAS;
 import static com.heaven.base.ui.view.widget.lockview.PatternLockView.AspectRatio.ASPECT_RATIO_SQUARE;
@@ -1330,10 +1331,12 @@ public class PatternLockView extends View {
         @SuppressWarnings("unused")
         public static final Creator<SavedState> CREATOR = new Creator<SavedState>() {
 
+            @Override
             public SavedState createFromParcel(Parcel in) {
                 return new SavedState(in);
             }
 
+            @Override
             public SavedState[] newArray(int size) {
                 return new SavedState[size];
             }

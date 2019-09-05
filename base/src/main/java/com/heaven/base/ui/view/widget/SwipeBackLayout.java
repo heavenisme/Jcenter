@@ -18,9 +18,6 @@ package com.heaven.base.ui.view.widget;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,6 +25,10 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.AbsListView;
 import android.widget.ScrollView;
+
+import androidx.core.view.ViewCompat;
+import androidx.customview.widget.ViewDragHelper;
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Swipe or Pull to finish a Activity.
@@ -285,7 +286,7 @@ public class SwipeBackLayout extends ViewGroup {
     private void finish() {
         Activity act = (Activity) getContext();
         act.finish();
-        act.overridePendingTransition(0, android.R.anim.fade_out);
+//        act.overridePendingTransition(0, android.R.anim.fade_out);
     }
 
     private class ViewDragHelperCallBack extends ViewDragHelper.Callback {

@@ -1,0 +1,122 @@
+<resources>
+    <declare-styleable name="SwipeToLoadLayout">
+        <attr name="refresh_enabled" format="boolean" />
+        <attr name="load_more_enabled" format="boolean" />
+
+        <attr name="swipe_style" format="enum">
+            <enum name="classic" value="0" />
+            <enum name="above" value="1" />
+            <enum name="blew" value="2" />
+            <enum name="scale" value="3" />
+        </attr>
+
+        <attr name="drag_ratio" format="float" />
+
+        <attr name="refresh_trigger_offset" format="dimension" />
+        <attr name="load_more_trigger_offset" format="dimension" />
+        <attr name="refresh_final_drag_offset" format="dimension" />
+        <attr name="load_more_final_drag_offset" format="dimension" />
+
+        <attr name="swiping_to_refresh_to_default_scrolling_duration" format="integer" />
+        <attr name="release_to_refreshing_scrolling_duration" format="integer" />
+        <attr name="refresh_complete_delay_duration" format="integer" />
+        <attr name="refresh_complete_to_default_scrolling_duration" format="integer" />
+        <attr name="default_to_refreshing_scrolling_duration" format="integer" />
+        <attr name="swiping_to_load_more_to_default_scrolling_duration" format="integer" />
+        <attr name="release_to_loading_more_scrolling_duration" format="integer" />
+        <attr name="load_more_complete_delay_duration" format="integer" />
+        <attr name="load_more_complete_to_default_scrolling_duration" format="integer" />
+        <attr name="default_to_loading_more_scrolling_duration" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="RecyclerViewPager">
+        <attr name="rvp_triggerOffset" format="float" />
+        <attr name="rvp_flingFactor" format="float" />
+        <attr name="rvp_singlePageFling" format="boolean" />
+        <attr name="rvp_inertia" format="boolean"/>
+        <attr name="rvp_millisecondsPerInch" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="XBanner">
+        <attr name="isAutoPlay" format="boolean"/>
+        <attr name="isHandLoop" format="boolean"/>
+        <attr name="AutoPlayTime" format="integer|reference"/>
+        <attr name="pointNormal" format="reference"/>
+        <attr name="pointSelect" format="reference"/>
+        <attr name="indicatorDrawable" format="reference"/>
+        <attr name="pointsVisibility" format="boolean"/>
+        <attr name="isTipsMarquee" format="boolean"/>
+        <attr name="pointsPosition" format="enum">
+            <enum name="LEFT" value="0"/>
+            <enum name="CENTER" value="1"/>
+            <enum name="RIGHT" value="2"/>
+        </attr>
+        <attr name="pointsContainerBackground" format="reference|color"/>
+        <attr name="pointContainerPosition" format="enum">
+            <enum name="TOP" value="10"/>
+            <enum name="BOTTOM" value="12"/>
+        </attr>
+        <!-- 指示点容器左右内间距 -->
+        <attr name="pointContainerLeftRightPadding" format="dimension"/>
+        <!-- 指示点上下内间距 -->
+        <attr name="pointTopBottomPadding" format="dimension"/>
+        <!-- 指示点左右内间距 -->
+        <attr name="pointLeftRightPadding" format="dimension"/>
+        <!-- 提示文案的文字颜色 -->
+        <attr name="tipTextColor" format="reference|color"/>
+        <!-- 提示文案的文字大小 -->
+        <attr name="tipTextSize" format="dimension"/>
+        <!--是否是数字指示器-->
+        <attr name="isShowNumberIndicator" format="boolean"/>
+        <!-- 数字指示器背景 -->
+        <attr name="numberIndicatorBacgroud" format="reference"/>
+        <!-- 当只有一页数据时是否显示指示器，默认值为false -->
+        <attr name="isShowIndicatorOnlyOne" format="boolean"/>
+        <!-- 图片切换速度 -->
+        <attr name="pageChangeDuration" format="integer"/>
+        <!--图片轮播框架展占位图-->
+        <attr name="placeholderDrawable" format="reference"/>
+        <!--是否开启一屏显示多个模式 默认不开启-->
+        <attr name="isClipChildrenMode" format="boolean"/>
+        <!--一屏显示多个左右间距-->
+        <attr name="clipChildrenLeftRightMargin" format="dimension"/>
+        <!--一屏显示多个上下间距-->
+        <attr name="clipChildrenTopBottomMargin" format="dimension"/>
+        <!--设置viewpager间距-->
+        <attr name="viewpagerMargin" format="dimension"/>
+        <!--少于三张是否支持一屏多显模式-->
+        <attr name="isClipChildrenModeLessThree" format="boolean"/>
+        <!--是否展示提示文案-->
+        <attr name="isShowTips" format="boolean"/>
+        <!--banner轮播区域底部margin-->
+        <attr name="bannerBottomMargin" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="SlideLayout">
+        <attr name="sl_slideSlop" format="dimension" />
+        <attr name="sl_duration" format="integer" />
+        <attr name="sl_enable" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="PatternLockView">
+        <attr name="dotCount" format="integer"/>
+        <attr name="dotNormalSize" format="dimension"/>
+        <attr name="dotSelectedSize" format="dimension"/>
+        <attr name="pathWidth" format="dimension"/>
+        <attr name="aspectRatioEnabled" format="boolean"/>
+        <attr name="aspectRatio" format="enum">
+            <enum name="square" value="0"/>
+            <enum name="width_bias" value="1"/>
+            <enum name="height_bias" value="2"/>
+        </attr>
+        <attr name="normalStateColor" format="color"/>
+        <attr name="correctStateColor" format="color"/>
+        <attr name="wrongStateColor" format="color"/>
+        <attr name="dotAnimationDuration" format="integer"/>
+        <attr name="pathEndAnimationDuration" format="integer"/>
+    </declare-styleable>
+
+    <attr name="backgroundCard" format="color" />
+    <attr name="colorWhite" format="color" />
+    <attr name="textColor" format="color" />
+</resources>

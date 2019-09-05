@@ -1,19 +1,14 @@
 apply plugin: 'com.android.library'
-apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'com.novoda.bintray-release'//添加
+//apply plugin: 'com.novoda.bintray-release'
 android {
-    def globalConfiguration = rootProject.extensions.getByName("ext")
-
-    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
-    buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
-
+    compileSdkVersion build_info.target_sdk
+    buildToolsVersion build_info.build_tools
     defaultConfig {
-        minSdkVersion globalConfiguration["androidMinSdkVersion"]
-        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
-
-        versionCode globalConfiguration["androidVersionCode"]
-        versionName globalConfiguration["androidVersionName"]
-
+        minSdkVersion build_info.min_sdk
+        targetSdkVersion build_info.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner app.test
     }
 
     compileOptions {
@@ -24,41 +19,60 @@ android {
     dataBinding {
         enabled = true
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
 }
 
+repositories {
+    flatDir { dirs 'libs' }
+}
 
 dependencies {
-    def uiDependencies = rootProject.ext.uiDependencies
-    def netDependencies = rootProject.ext.netDependencies
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile uiDependencies.appCompat
-    compile uiDependencies.design
-    compile uiDependencies.percent
-    compile uiDependencies.constraint
-    compile uiDependencies.recyclerView
-    compile uiDependencies.cardview
-    compile uiDependencies.glide
-    compile uiDependencies.androidAnnotations
-    compile uiDependencies.support
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api uiDep.appCompat
+    api uiDep.constraint
+    api uiDep.design
+    api uiDep.recyclerView
+    api uiDep.cardview
+    api uiDep.glide
+    api uiDep.glideokhttp
 
-    compile uiDependencies.styleableToast
+    api archDepx.extensions
+    api uiDep.arouterapi
+    api netDep.rxAndroid
+    api uiDep.multidex
+    api uiDep.dagger
+    api archDepx.roomcommon
+    annotationProcessor uiDep.daggerCompiler
 
-    compile 'com.github.todou:appbarspring:1.0.3'
+    testImplementation testDep.junit
+    androidTestImplementation testDep.junit
+    androidTestImplementation testDep.testrunner
 
-    compile netDependencies.rxAndroid
-    compile netDependencies.retrofit
-    compile netDependencies.logger
-    compile project(':theme')
-
-//    compile project(':service')
+    configurations {
+        all*.exclude group: 'com.squareup.okhttp3' , module: 'okhttp'
+    }
 }
+
 
 //添加
-publish {
-    userOrg = 'heavenisme'//bintray.com用户名
-    groupId = 'com.heaven.base'//jcenter上的路径
-    artifactId = 'baseui'//项目名称
-    publishVersion = '1.0.0'//版本号
-    desc = 'android ui base'//描述，不重要
-    website = 'https://github.com/heavenisme/Jcenter.git'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
-}
+//publish {
+//    userOrg = 'heavenisme'//bintray.com用户名
+//    repoName = 'maven'          // Binary上的刚才新建的仓库名（Repository）
+//    groupId = 'com.heaven.base'//jcenter上的路径
+//    artifactId = 'baseui'//项目名称
+//    publishVersion = '1.0.0'//版本号
+//    desc = 'android aop mode aar'//描述，不重要
+//    website = 'https://github.com/heavenisme/Jcenter.git'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+//}
